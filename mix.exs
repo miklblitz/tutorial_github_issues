@@ -5,7 +5,7 @@ defmodule Issuees.MixProject do
     [
       name: "Github Issues",
       app: :issuees,
-      escript: escript_config,
+      escript: escript_config(),
       version: "0.1.0",
       elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
