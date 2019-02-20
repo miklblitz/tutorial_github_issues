@@ -8,6 +8,7 @@ use Mix.Config
 # if you want to provide default values for your application for
 # 3rd-party users, it should be done in your "mix.exs" file.
 
+#config :issuees, github_url: "https://api.github.com"
 # You can configure your application as:
 #
 #     config :issuees, key: :value
@@ -27,4 +28,4 @@ use Mix.Config
 # Configuration from the imported file will override the ones defined
 # here (which is why it is important to import them last).
 #
-#     import_config "#{Mix.env()}.exs"
+     import_config "#{Mix.env()}.exs"
