@@ -43,9 +43,6 @@ r2 c1 | r2 c2  | r2 c4
 r3 c1 | r3 c2  | r3 c4  
 r4 c1 | r4++c2 | r4 c4  
 "
-    # assert capture_io(fn ->
-    #   IO.puts "a"
-    # end) == "a\n"
   end
 
 end

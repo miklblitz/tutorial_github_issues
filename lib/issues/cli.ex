@@ -14,7 +14,7 @@ defmodule Issues.CLI do
   @moduledoc """
     Parse string
   """
-  def run(argv) do
+  def main(argv) do
     argv
     |> parse_args
     |> process
