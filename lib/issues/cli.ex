@@ -1,5 +1,14 @@
+# Examples:
+# Issues.CLI.run("kugaevsky", "jquery-phoenix")
+# Issues.CLI.run(["rails", "rails", "60"])
+#
+# или, с консоли:
+# mix run -e 'Issues.CLI.run(["elixir-lang","elixir","5"])'
+# 
 defmodule Issues.CLI do
   
+  import Issues.TableFormatter, only: [print_table_for_columns: 2]
+
   @default_count 4
   
   @moduledoc """
@@ -35,10 +44,12 @@ defmodule Issues.CLI do
     System.halt(0)
   end
 
-  def process({user, project, _count}) do
+  def process({user, project, count}) do
     Issues.GithubIssues.fetch(user, project)
     |> decode_response
     |> sort_into_ascending_order
+    |> Enum.take(count)
+    |> print_table_for_columns(["number", "created_at", "title"])
   end
 
   def decode_response({:ok, body}), do: body
@@ -50,7 +61,7 @@ defmodule Issues.CLI do
   end
 
   def sort_into_ascending_order(list_of_issues) do
-    Enum.sort list_of_issues, &(Map.get(&1, "created_at")<=Map.get(&2, "created_at"))
+    Enum.sort list_of_issues, &(Map.get(&1, "created_at")>=Map.get(&2, "created_at"))
   end
 
 end
